@@ -11,6 +11,7 @@ struct ContentView: View {
     // Controls
     @State private var opacity: Double = 0.5
     @State private var isLocked = false
+    @State private var showControls = true
 
     // Committed transform
     @State private var position: CGSize = .zero
@@ -28,6 +29,11 @@ struct ContentView: View {
             cameraLayer
             overlayLayer
             controlsLayer
+        }
+        .onTapGesture {
+            withAnimation(.easeInOut(duration: 0.2)) {
+                showControls.toggle()
+            }
         }
         .preferredColorScheme(.dark)
         .statusBarHidden()
@@ -78,14 +84,17 @@ struct ContentView: View {
     private var controlsLayer: some View {
         VStack {
             Spacer()
-            controlBar
+            if showControls {
+                controlBar
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
         }
     }
 
     // MARK: - Gestures
 
     private var dragGesture: some Gesture {
-        DragGesture(minimumDistance: 0)
+        DragGesture()
             .updating($dragDelta) { value, state, _ in
                 state = value.translation
             }
