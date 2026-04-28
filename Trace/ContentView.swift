@@ -152,9 +152,7 @@ struct ContentView: View {
             buttonRow
         }
         .padding(.horizontal, 16)
-        .padding(.top, 12)
         .padding(.bottom, 8)
-        .background(.ultraThinMaterial)
     }
 
     private var opacityRow: some View {
@@ -168,6 +166,10 @@ struct ContentView: View {
                 .font(.footnote)
                 .foregroundStyle(.secondary)
         }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 9)
+        .background(.regularMaterial)
+        .clipShape(Capsule())
     }
 
     private var buttonRow: some View {
@@ -183,6 +185,7 @@ struct ContentView: View {
                 .background(.regularMaterial)
                 .clipShape(Capsule())
             }
+            .buttonStyle(.plain)
 
             if overlayImage != nil {
                 Spacer()

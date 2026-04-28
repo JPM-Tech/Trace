@@ -10,6 +10,7 @@
 		09D73E57534501880576DFEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4115035B5B88A1FAD7469121 /* ContentView.swift */; };
 		10C646FC53553BED7CA4A9D7 /* TraceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485D644241BC88E87023939F /* TraceApp.swift */; };
 		1928393B7AC1CCEFAA883217 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25918FC9DA33BAED17C23E8E /* CameraManager.swift */; };
+		A2F968AFFD9FBFEC44D014D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71A8D5D00C17CCA705A15A86 /* Assets.xcassets */; };
 		F5C494064487136BB3477CB5 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10445D78B5189D9E264429E4 /* CameraPreviewView.swift */; };
 /* End PBXBuildFile section */
 
@@ -19,6 +20,7 @@
 		4115035B5B88A1FAD7469121 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		485D644241BC88E87023939F /* TraceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraceApp.swift; sourceTree = "<group>"; };
 		49BD789EB4EA7E89509F11EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		71A8D5D00C17CCA705A15A86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D4A9E8B8874991FDAD13763 /* Trace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -34,6 +36,7 @@
 		D88D924ED6A3D3B0026832B2 /* Trace */ = {
 			isa = PBXGroup;
 			children = (
+				71A8D5D00C17CCA705A15A86 /* Assets.xcassets */,
 				25918FC9DA33BAED17C23E8E /* CameraManager.swift */,
 				10445D78B5189D9E264429E4 /* CameraPreviewView.swift */,
 				4115035B5B88A1FAD7469121 /* ContentView.swift */,
@@ -59,6 +62,7 @@
 			buildConfigurationList = BA9755420454483D9EEF8436 /* Build configuration list for PBXNativeTarget "Trace" */;
 			buildPhases = (
 				1EE8E24878640FABA05E7235 /* Sources */,
+				7EA2B6FEF6EFE0421AE953F0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -97,6 +101,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7EA2B6FEF6EFE0421AE953F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2F968AFFD9FBFEC44D014D1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1EE8E24878640FABA05E7235 /* Sources */ = {
@@ -181,7 +196,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.jpmtech.Trace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaselewis.Trace;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -200,7 +215,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.jpmtech.Trace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaselewis.Trace;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.9;
 				TARGETED_DEVICE_FAMILY = "1,2";
