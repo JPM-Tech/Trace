@@ -9,7 +9,6 @@ Trace uses your device's rear camera as a live viewfinder. You pick a photo from
 ## Requirements
 
 - **Xcode** 15 or later
-- **xcodegen** — used to generate the `.xcodeproj` from `project.yml`
 - **iOS** 16.0 or later
 - A **physical iPhone or iPad** to use the camera (the simulator has no camera feed)
 
