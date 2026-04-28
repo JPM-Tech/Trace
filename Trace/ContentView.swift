@@ -30,6 +30,7 @@ struct ContentView: View {
             overlayLayer
             controlsLayer
         }
+        .animation(.easeIn(duration: 0.4), value: camera.status)
         .onTapGesture {
             withAnimation(.easeInOut(duration: 0.2)) {
                 showControls.toggle()
@@ -53,12 +54,29 @@ struct ContentView: View {
 
     @ViewBuilder
     private var cameraLayer: some View {
-        if camera.isAuthorized {
+        switch camera.status {
+        case .loading:
+            cameraLoadingView
+        case .unauthorized:
+            cameraPermissionView
+        case .ready:
             CameraPreviewView(session: camera.session)
                 .ignoresSafeArea()
-        } else {
-            cameraPermissionView
+                .transition(.opacity)
         }
+    }
+
+    private var cameraLoadingView: some View {
+        VStack(spacing: 12) {
+            ProgressView()
+                .progressViewStyle(.circular)
+                .controlSize(.large)
+                .tint(.white)
+            Text("Starting camera…")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .transition(.opacity)
     }
 
     @ViewBuilder
