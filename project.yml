@@ -15,6 +15,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.chaselewis.Trace
         SWIFT_VERSION: 5.9
         IPHONEOS_DEPLOYMENT_TARGET: 16.0
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     info:
       path: Trace/Info.plist
       properties:
