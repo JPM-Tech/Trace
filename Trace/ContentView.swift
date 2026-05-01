@@ -48,6 +48,9 @@ struct ContentView: View {
                 resetTransform()
             }
         }
+        .onChange(of: isLocked) { locked in
+            camera.setFocusLocked(locked)
+        }
     }
 
     // MARK: - Layers
