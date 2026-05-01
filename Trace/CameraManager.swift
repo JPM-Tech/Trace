@@ -10,6 +10,8 @@ class CameraManager: NSObject, ObservableObject {
     let session = AVCaptureSession()
     @Published var status: CameraStatus = .loading
 
+    private var captureDevice: AVCaptureDevice?
+
     override init() {
         super.init()
         checkAuthorization()
@@ -42,6 +44,7 @@ class CameraManager: NSObject, ObservableObject {
             DispatchQueue.main.async { self.status = .unauthorized }
             return
         }
+        captureDevice = device
         session.addInput(input)
         // startRunning() is synchronous — it blocks until the session is
         // fully live, so status becomes .ready only once frames are flowing.
@@ -51,5 +54,26 @@ class CameraManager: NSObject, ObservableObject {
                 self?.status = .ready
             }
         }
+    }
+
+    func setFocusLocked(_ locked: Bool) {
+        guard let device = captureDevice else { return }
+        try? device.lockForConfiguration()
+        if locked {
+            if device.isFocusModeSupported(.locked) {
+                device.focusMode = .locked
+            }
+            if device.isExposureModeSupported(.locked) {
+                device.exposureMode = .locked
+            }
+        } else {
+            if device.isFocusModeSupported(.continuousAutoFocus) {
+                device.focusMode = .continuousAutoFocus
+            }
+            if device.isExposureModeSupported(.continuousAutoExposure) {
+                device.exposureMode = .continuousAutoExposure
+            }
+        }
+        device.unlockForConfiguration()
     }
 }
