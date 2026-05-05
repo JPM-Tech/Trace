@@ -11,6 +11,7 @@ struct ContentView: View {
     // Controls
     @State private var opacity: Double = 0.5
     @State private var isLocked = false
+    @State private var isMirrored = false
     @State private var showControls = true
 
     // Committed transform
@@ -45,6 +46,7 @@ struct ContentView: View {
                       let image = UIImage(data: data)
                 else { return }
                 overlayImage = image
+                isMirrored = false
                 resetTransform()
             }
         }
@@ -89,7 +91,8 @@ struct ContentView: View {
                 .resizable()
                 .scaledToFit()
                 .opacity(opacity)
-                .scaleEffect(scale * scaleDelta)
+                .scaleEffect(x: (isMirrored ? -1 : 1) * scale * scaleDelta,
+                             y: scale * scaleDelta)
                 .rotationEffect(rotation + rotationDelta)
                 .offset(
                     x: position.width + dragDelta.width,
@@ -199,6 +202,17 @@ struct ContentView: View {
                     }
                 } label: {
                     Image(systemName: "arrow.counterclockwise")
+                        .frame(width: 20, height: 20)
+                        .padding(10)
+                        .background(.regularMaterial)
+                        .clipShape(Circle())
+                }
+
+                Button {
+                    isMirrored.toggle()
+                } label: {
+                    Image(systemName: "flip.horizontal")
+                        .foregroundStyle(isMirrored ? Color.yellow : Color.white)
                         .frame(width: 20, height: 20)
                         .padding(10)
                         .background(.regularMaterial)
